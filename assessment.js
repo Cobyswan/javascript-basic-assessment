@@ -87,7 +87,8 @@ heroes.unshift('spongebob');
 var secondHero = heroes.splice(2,1);
 
 // leave batman in the array but put a copy of him on a variable called thirdHero
-var thirdHero = heroes.splice(1,1);
+var thirdHero = heroes[1]
+// heroes.splice(1,1);
 
 
 
@@ -106,8 +107,7 @@ var addItem = (arr, item) => {
 // The order of the array should not be changed
 
 var removeItem = (arr, string) => {
-	arr.splice(arr.indexOf(string));
-	return arr;
+	return arr.filter((arrEle) => arrEle !== string);
 } 
 
 
@@ -115,7 +115,10 @@ var removeItem = (arr, string) => {
 // repeats strings. example 4->8, 2.5->5, 'Awesome'->'AwesomeAwesome'
 
 var doubleTheFun = (val) => {
-	if(val === val){
+	if(isNaN(val) === true){
+		return val + val;
+	}
+	else {
 		return (+val) + (+val);
 	}
 };
@@ -131,13 +134,12 @@ var getValueOfProperty = (object, property) => object[property];
 // and returns an object with a message, author, and timestamp, that is
 // the current time as a Date object
 
-var makeChatMessage = (message, author) => {
-	return {
+var makeChatMessage = (message, author) => ({
 		message: message,
 		author: author,
 		date: new Date()
-	}
-}
+	});
+
 
 // #14 Create a function called coderTest that takes in an object that is a person. It looks to see if the person’s name is Jeremy and then changes the person object to have a property called lovesCode with a value of 10.  If their name is Brack set lovesCode to 0.  otherwise set lovesCode to 5.
 
@@ -183,4 +185,6 @@ var outside = (temperature, humidity, cloudiness) => {
 
 // #16 Create a function called callerBack that takes in a function (holla) and a string parameter(back) and invokes it(holla) with the argument string(back) + ' back'."
 // example - If I call you with 'Give it' you should invoke holla with 'Give it back'
-var callerBack = (holla, back) => holla(back) + ' back';
+var callerBack = (holla, back) => {
+	return console.log(holla(back) + " back.");
+}
